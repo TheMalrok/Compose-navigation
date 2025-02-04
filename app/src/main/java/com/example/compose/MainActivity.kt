@@ -75,7 +75,7 @@ fun MyApp() {
 }
 
 @Composable
-fun DrawerContent(navController: NavController,drawerState: DrawerState, scope: CoroutineScope) {
+fun DrawerContent(navController: NavController, drawerState: DrawerState, scope: CoroutineScope) {
     ModalDrawerSheet {
         Text("Menu główne", fontSize = 20.sp, modifier = Modifier.padding(16.dp))
         HorizontalDivider()
@@ -97,8 +97,8 @@ fun DrawerItem(
         label = { Text(label) },
         selected = isSelected,
         onClick = {
-            scope.launch { drawerState.close() } // Zamknięcie drawer po kliknięciu
-            navController.navigate(route)
+            scope.launch { drawerState.close() }
+            navController.navigate(route.replace("{name}", "anon").replace("{surname}", "user"))
         },
         modifier = Modifier.padding(vertical = 8.dp)
     )
